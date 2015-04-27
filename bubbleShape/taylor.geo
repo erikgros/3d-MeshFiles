@@ -1,0 +1,31 @@
+/* Taylor bubble shape */
+
+/*
+ *              6           2
+ *              o --------- o 
+ *            /              `,     
+ *          8 o o 5       1 o  o 4    
+ *            \              ,'
+ *              o --------- o 
+ *              7           3
+ *
+ */
+
+Point(i+1) = {xc+r+body, yc, zc, b1}; // center
+Point(i+2) = {xc+r+body, yc+r, zc, b1}; // up
+Point(i+3) = {xc+r+body, yc-r, zc, b1}; // down 
+Point(i+4) = {xc+r+body+r, yc, zc, b2}; // right
+Point(i+5) = {xc+r, yc, zc, b1}; // center
+Point(i+6) = {xc+r, yc+r, zc, b1}; // up
+Point(i+7) = {xc+r, yc-r, zc, b1}; // down 
+Point(i+8) = {xc, yc, zc, b2}; // right
+
+Ellipse(j+1) = {i+2, i+1, i+1, i+4};
+Ellipse(j+2) = {i+4, i+1, i+1, i+3};
+Ellipse(j+3) = {i+7, i+5, i+5, i+8};
+Ellipse(j+4) = {i+8, i+5, i+5, i+6};
+Line(j+5) = {i+6, i+2};
+Line(j+6) = {i+3, i+7};
+
+Extrude {{1, 0, 0}, {xc, yc, zc}, Pi/2} { Line{j+5, j+1, j+2, j+6, j+3, j+4}; }
+Extrude {{1, 0, 0}, {xc, yc, zc}, Pi/2} { Line{j+7, j+11, j+14, j+17, j+21, j+24}; }
