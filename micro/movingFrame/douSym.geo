@@ -6,8 +6,8 @@
 */
 D = 1.0;  // channel diameter
 
-b1 = 0.05;  // bubble fine
-b2 = 0.09;  // bubble coarse
+b1 = 0.02;  // bubble fine
+b2 = 0.025;  // bubble coarse
 
 /* defining bubble shape: */
 
@@ -104,7 +104,7 @@ Physical Surface('wallNormalW') = {s1, -29, 46, centS+1};
 Physical Surface('wallInflowUParabolic') = {-leftS, rightS};
 
 /* mesh refinement: */
-
+Characteristic Length {14, 15, 17, 20, 21, 23} = 0.1;
 // left region axial:
 //Transfinite Line {23, 24, 28} = 70 Using Progression 1.2;
 // right region axial:
